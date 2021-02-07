@@ -6,7 +6,9 @@ module.exports = () => {
   const router = Router();
 
   router.get('/', (req, res, next) => {
-    res.send('It\'s alive!');
+    res.send({
+      hello: 'world'
+    });
   });
 
   return router;

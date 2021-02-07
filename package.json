@@ -21,8 +21,10 @@
     "cors": "2.8.4",
     "dotenv": "6.1.0",
     "express": "4.16.2",
+    "firebase-admin": "^9.4.2",
     "lodash": "4.17.4",
     "mongodb": "2.2.25",
+    "nanoid": "^3.1.20",
     "nodemon": "1.18.9",
     "request": "^2.88.0"
   },

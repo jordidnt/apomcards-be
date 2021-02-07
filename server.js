@@ -4,19 +4,22 @@ const Application = require('./application');
 const application = Application();
 // const Users = require('./users');
 const Health = require('./health');
+const Games = require('./games');
+const Firebase = require('./lib/firebase');
+const firebase = Firebase();
+const dbUtils = require('./utils/dbUtils')();
 
 async function main() {
-  // const db = await MongoClient.connect(mongoUri);
 
   application.use('/health', Health());
-  // application.use('/users', Users(db));
-
+  // application.use('/users', Users(firebase));
+  application.use('/games', Games(firebase, dbUtils));
   // custom 404 page to avoid html
   application.use((req, res, next) => res.sendStatus(404));
   application.use((error, req, res, next) => {
     if (error) {
-      const formattedError = formatError(error);
-      res.status(500).send(formattedError);
+      // const formattedError = formatError(error);
+      res.status(500).send(error);
       return;
     } else {
       return next();
