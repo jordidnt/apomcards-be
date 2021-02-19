@@ -5,6 +5,7 @@ const application = Application();
 // const Users = require('./users');
 const Health = require('./health');
 const Games = require('./games');
+const Submissions = require('./submissions');
 const Firebase = require('./lib/firebase');
 const firebase = Firebase();
 const dbUtils = require('./utils/dbUtils')();
@@ -14,6 +15,7 @@ async function main() {
   application.use('/health', Health());
   // application.use('/users', Users(firebase));
   application.use('/games', Games(firebase, dbUtils));
+  application.use('/submissions', Submissions(firebase));
   // custom 404 page to avoid html
   application.use((req, res, next) => res.sendStatus(404));
   application.use((error, req, res, next) => {
